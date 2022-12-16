@@ -74,3 +74,20 @@ footer {
   color: #5d5d5d;
   margin-top: 1rem;
 }
+
+#label-container {
+  margin-top: 2rem;
+  display: flex;
+  font-size: 1.3rem;
+}
+
+#label-container > div {
+  margin-right: 1rem;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgb(246, 246, 246);
+}
+
+.max {
+  background-color: rgb(255, 216, 145) !important;
+}

@@ -16,10 +16,19 @@ const start = async () => {
 
   const predict = async () => {
     const prediction = await model.predict(webcam.canvas);
+
+    const probs = prediction.map((v) => parseFloat(v.probability.toFixed(2)));
+    const max = probs.indexOf(Math.max(...probs));
+
+    console.log(probs);
+
     for (let i = 0; i < maxPredictions; i++) {
       const classPrediction =
-        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        prediction[i].className + ": " + probs[i] * 100 + "%";
       labelContainer.childNodes[i].innerHTML = classPrediction;
+
+      if (i === max) labelContainer.childNodes[i].classList.add("max");
+      else labelContainer.childNodes[i].classList.remove("max");
     }
   };
 
