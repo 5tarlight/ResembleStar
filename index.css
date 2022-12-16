@@ -46,6 +46,7 @@ fieldset > legend {
 
 .main {
   width: 80%;
+  padding-left: 1rem;
 }
 
 .start {
@@ -60,4 +61,9 @@ fieldset > legend {
 
 .start:hover {
   background-color: #afafaf;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
 }
