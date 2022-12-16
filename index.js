@@ -10,7 +10,7 @@ const start = async () => {
   maxPredictions = model.getTotalClasses();
 
   const flip = true; // TODO 조절할수 있게
-  webcam = new tmImage.Webcam(512, 512, flip);
+  webcam = new tmImage.Webcam(768, 768, flip);
   await webcam.setup();
   await webcam.play();
 
