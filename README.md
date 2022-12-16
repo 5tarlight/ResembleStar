@@ -15,8 +15,16 @@ pip install -r requirements.txt
 
 npm install
 # or
-yarn add
+yarn
 ```
+
+또는, 한번의 자동화된 툴을 이용합니다. (Linux/MacOS 전용)
+
+```bash
+./setup.sh
+```
+
+용
 
 ## Execution
 
