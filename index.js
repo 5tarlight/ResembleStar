@@ -4,7 +4,9 @@ let startBtn;
 let fieldSet;
 let labels;
 let cma;
+let flipper;
 let running = false;
+let flip = true; // TODO 조절할수 있게
 
 const stop = () => {
   running = false;
@@ -31,7 +33,6 @@ const start = async () => {
   model = await tmImage.load(modelURL, metadataURL);
   maxPredictions = model.getTotalClasses();
 
-  const flip = true; // TODO 조절할수 있게
   webcam = new tmImage.Webcam(550, 550, flip);
   await webcam.setup();
   await webcam.play();
@@ -53,6 +54,11 @@ const start = async () => {
   };
 
   const loop = async () => {
+    if (flip !== flipper.checked) {
+      flip = flipper.checked;
+      stop();
+      start();
+    }
     webcam.update();
     await predict();
     window.requestAnimationFrame(loop);
@@ -71,5 +77,6 @@ startBtn = document.querySelector("button#start");
 fieldSet = document.querySelector("fieldset");
 labels = document.querySelector("#label-container");
 cam = document.querySelector("#webcam-container");
+flipper = document.querySelector("#flip");
 
 startBtn.addEventListener("click", start);
