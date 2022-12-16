@@ -80,6 +80,7 @@ footer {
   margin-top: 2rem;
   display: flex;
   font-size: 1.3rem;
+  justify-content: space-evenly;
 }
 
 #label-container > div {
