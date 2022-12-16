@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.inner {
+  display: flex;
+}
+
+h1 {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 4rem;
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+h2 {
+  display: block;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+fieldset {
+  padding: 5px;
+  border: none;
+}
+
+fieldset > legend {
+  font-size: 1.5rem;
+}
+
+.menu {
+  width: 20%;
+}
+
+.main {
+  width: 80%;
+}
+
+.start {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #e8e8e8;
+}
+
+.start:hover {
+  background-color: #afafaf;
+}

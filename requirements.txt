@@ -1,0 +1,4 @@
+beautifulsoup4
+certifi
+# google_images_download
+selenium
