@@ -6,8 +6,9 @@ let labels;
 let cma;
 let flipper;
 let ls;
+let loading;
 let running = false;
-let flip = true; // TODO 조절할수 있게
+let flip = true;
 
 const rankings = (array) => {
   return array
@@ -41,12 +42,14 @@ const start = async () => {
   const modelURL = URL + group + "model.json";
   const metadataURL = URL + group + "metadata.json";
 
+  loading.style.display = "block";
   model = await tmImage.load(modelURL, metadataURL);
   maxPredictions = model.getTotalClasses();
 
   webcam = new tmImage.Webcam(550, 550, flip);
   await webcam.setup();
   await webcam.play();
+  loading.style.display = "none";
   labels.style.visibility = "visible";
 
   const predict = async () => {
@@ -64,35 +67,38 @@ const start = async () => {
     ls[2].innerHTML = `${prediction[ranks.indexOf(3)].className}: ${Math.floor(
       probs[ranks.indexOf(3)] * 100
     )}%`;
-
-    // for (let i = 0; i < maxPredictions; i++) {
-    //   const classPrediction =
-    //     prediction[i].className + ": " + Math.floor(probs[i] * 100) + "%";
-    //   labelContainer.childNodes[i].innerHTML = classPrediction;
-
-    //   if (i === max) labelContainer.childNodes[i].classList.add("max");
-    //   else labelContainer.childNodes[i].classList.remove("max");
-    // }
   };
 
   const loop = async () => {
-    if (flip !== flipper.checked) {
-      flip = flipper.checked;
+    try {
+      if (flip !== flipper.checked) {
+        flip = flipper.checked;
+        stop();
+        start();
+      }
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    } catch (e) {
+      alert(
+        "에러가 발생했습니다.\n카메라를 허용하지 않아서 일 수 있습니다\n\n" +
+          e.toString()
+      );
       stop();
-      start();
     }
-    webcam.update();
-    await predict();
-    window.requestAnimationFrame(loop);
   };
 
-  window.requestAnimationFrame(loop);
-
-  document.getElementById("webcam-container").appendChild(webcam.canvas);
-  labelContainer = document.getElementById("label-container");
-  // for (let i = 0; i < maxPredictions; i++) {
-  // labelContainer.appendChild(document.createElement("div"));
-  // }
+  try {
+    window.requestAnimationFrame(loop);
+    document.getElementById("webcam-container").appendChild(webcam.canvas);
+    labelContainer = document.getElementById("label-container");
+  } catch (e) {
+    alert(
+      "에러가 발생했습니다.\n카메라를 허용하지 않아서 일 수 있습니다\n\n" +
+        e.toString()
+    );
+    stop();
+  }
 };
 
 startBtn = document.querySelector("button#start");
@@ -105,6 +111,18 @@ ls = [
   document.querySelector("#l2"),
   document.querySelector("#l3"),
 ];
+loading = document.querySelector("#loading");
 
-startBtn.addEventListener("click", start);
+startBtn.addEventListener("click", () => {
+  try {
+    start();
+  } catch (e) {
+    alert(
+      "에러가 발생했습니다.\n카메라를 허용하지 않아서 일 수 있습니다\n\n" +
+        e.toString()
+    );
+    stop();
+  }
+});
 labels.style.visibility = "hidden";
+loading.style.display = "none";
