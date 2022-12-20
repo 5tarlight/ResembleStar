@@ -101,3 +101,12 @@ footer {
   text-align: center;
   margin-top: 220px;
 }
+
+#status {
+  margin: 1rem 0;
+  font-size: 0.8rem;
+}
+
+.error {
+  color: red;
+}

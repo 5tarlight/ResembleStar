@@ -7,6 +7,7 @@ let cma;
 let flipper;
 let ls;
 let loading;
+let stat;
 let running = false;
 let flip = true;
 
@@ -102,8 +103,19 @@ ls = [
   document.querySelector("#l3"),
 ];
 loading = document.querySelector("#loading");
+stat = document.querySelector("#status");
 
 startBtn.addEventListener("click", start);
 labels.style.visibility = "hidden";
 loading.style.display = "none";
 flipper.disabled = true;
+
+fetch(URL)
+  .then((res) => {
+    if (res.ok) stat.innerText = "서버에 연결되었습니다.";
+    else stat.innerText = "서버에 연결하지 못했습니다.";
+  })
+  .catch((e) => {
+    stat.classList.add("error");
+    stat.innerText = "서버에 연결하지 못했습니다.\n" + e;
+  });

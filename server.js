@@ -7,6 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.get("/", (req, res) => res.send({ stat: "Success" }));
+
 app.listen(9000, () => {
   console.log("File Server is running on port 9K.");
 });
