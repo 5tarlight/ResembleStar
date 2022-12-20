@@ -25,9 +25,10 @@ const stop = () => {
   startBtn.removeEventListener("click", stop);
   startBtn.addEventListener("click", start);
   fieldSet.disabled = false;
-  labels.innerHTML = "";
+  flipper.disabled = true;
   cam.innerHTML = "";
   labels.style.visibility = "hidden";
+  loading.style.display = "none";
 };
 
 const start = async () => {
@@ -36,6 +37,7 @@ const start = async () => {
   startBtn.removeEventListener("click", start);
   startBtn.addEventListener("click", stop);
   fieldSet.disabled = true;
+  flipper.disabled = false;
 
   const group =
     document.querySelector('input[type="radio"]:checked').value + "/";
@@ -47,58 +49,46 @@ const start = async () => {
   maxPredictions = model.getTotalClasses();
 
   webcam = new tmImage.Webcam(550, 550, flip);
-  await webcam.setup();
-  await webcam.play();
+  await webcam?.setup();
+  await webcam?.play();
   loading.style.display = "none";
   labels.style.visibility = "visible";
+  console.log("visible");
 
   const predict = async () => {
+    if (!webcam.canvas) {
+      console.log("return calls");
+      return;
+    }
     const prediction = await model.predict(webcam.canvas);
 
     const probs = prediction.map((v) => parseFloat(v.probability.toFixed(2)));
     const ranks = rankings(probs);
 
-    ls[0].innerHTML = `${prediction[ranks.indexOf(1)].className}: ${Math.floor(
+    ls[0].innerText = `${prediction[ranks.indexOf(1)].className}: ${Math.floor(
       probs[ranks.indexOf(1)] * 100
     )}%`;
-    ls[1].innerHTML = `${prediction[ranks.indexOf(2)].className}: ${Math.floor(
+    ls[1].innerText = `${prediction[ranks.indexOf(2)].className}: ${Math.floor(
       probs[ranks.indexOf(2)] * 100
     )}%`;
-    ls[2].innerHTML = `${prediction[ranks.indexOf(3)].className}: ${Math.floor(
+    ls[2].innerText = `${prediction[ranks.indexOf(3)].className}: ${Math.floor(
       probs[ranks.indexOf(3)] * 100
     )}%`;
   };
 
   const loop = async () => {
-    try {
-      if (flip !== flipper.checked) {
-        flip = flipper.checked;
-        stop();
-        start();
-      }
-      webcam.update();
-      await predict();
-      window.requestAnimationFrame(loop);
-    } catch (e) {
-      alert(
-        "에러가 발생했습니다.\n카메라를 허용하지 않아서 일 수 있습니다\n\n" +
-          e.toString()
-      );
+    if (flip !== flipper.checked && running) {
+      flip = flipper.checked;
       stop();
+      start();
     }
-  };
-
-  try {
+    webcam.update();
+    await predict();
     window.requestAnimationFrame(loop);
-    document.getElementById("webcam-container").appendChild(webcam.canvas);
-    labelContainer = document.getElementById("label-container");
-  } catch (e) {
-    alert(
-      "에러가 발생했습니다.\n카메라를 허용하지 않아서 일 수 있습니다\n\n" +
-        e.toString()
-    );
-    stop();
-  }
+  };
+  document.getElementById("webcam-container").appendChild(webcam.canvas);
+
+  window.requestAnimationFrame(loop);
 };
 
 startBtn = document.querySelector("button#start");
@@ -113,16 +103,7 @@ ls = [
 ];
 loading = document.querySelector("#loading");
 
-startBtn.addEventListener("click", () => {
-  try {
-    start();
-  } catch (e) {
-    alert(
-      "에러가 발생했습니다.\n카메라를 허용하지 않아서 일 수 있습니다\n\n" +
-        e.toString()
-    );
-    stop();
-  }
-});
+startBtn.addEventListener("click", start);
 labels.style.visibility = "hidden";
 loading.style.display = "none";
+flipper.disabled = true;
