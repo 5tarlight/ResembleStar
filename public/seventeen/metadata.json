@@ -1,1 +1,25 @@
-{"tfjsVersion":"1.3.1","tmVersion":"2.4.5","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2022-12-17T15:35:34.186Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["Mingyu","Jeonghan","Wonwoo","Hoshi","Joshua","Jun","The8","Woozi","DK","S.Coups","Vernon","Seungkwan","Dino"],"imageSize":224}
+{
+  "tfjsVersion": "1.3.1",
+  "tmVersion": "2.4.5",
+  "packageVersion": "0.8.4-alpha2",
+  "packageName": "@teachablemachine/image",
+  "timeStamp": "2022-12-17T15:35:34.186Z",
+  "userMetadata": {},
+  "modelName": "tm-my-image-model",
+  "labels": [
+    "민규",
+    "정환",
+    "은우",
+    "호시",
+    "조슈아",
+    "준",
+    "디에잇",
+    "우지",
+    "DK",
+    "에스쿱스",
+    "버논",
+    "승관",
+    "디노"
+  ],
+  "imageSize": 224
+}

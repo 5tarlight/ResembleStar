@@ -1,1 +1,11 @@
-{"tfjsVersion":"1.3.1","tmVersion":"2.4.5","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2022-12-20T12:26:49.305Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["Minji","Haerin","Hyebin","Danielle Marsh","Hanni"],"imageSize":224}
+{
+  "tfjsVersion": "1.3.1",
+  "tmVersion": "2.4.5",
+  "packageVersion": "0.8.4-alpha2",
+  "packageName": "@teachablemachine/image",
+  "timeStamp": "2022-12-20T12:26:49.305Z",
+  "userMetadata": {},
+  "modelName": "tm-my-image-model",
+  "labels": ["민지", "해린", "혜빈", "다니엘", "하니"],
+  "imageSize": 224
+}

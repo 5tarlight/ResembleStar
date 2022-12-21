@@ -1,1 +1,11 @@
-{"tfjsVersion":"1.3.1","tmVersion":"2.4.5","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2022-12-17T14:59:05.422Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["Seo Soo-jin","Jeon So-yeon","Minnie","Cho Mi-yeon","Yeh Shu Hua","Song Yuqi"],"imageSize":224}
+{
+  "tfjsVersion": "1.3.1",
+  "tmVersion": "2.4.5",
+  "packageVersion": "0.8.4-alpha2",
+  "packageName": "@teachablemachine/image",
+  "timeStamp": "2022-12-17T14:59:05.422Z",
+  "userMetadata": {},
+  "modelName": "tm-my-image-model",
+  "labels": ["수진", "소연", "민니", "미연", "슈화", "우기"],
+  "imageSize": 224
+}

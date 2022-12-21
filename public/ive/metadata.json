@@ -1,1 +1,11 @@
-{"tfjsVersion":"1.3.1","tmVersion":"2.4.5","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2022-12-20T08:42:40.503Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["Jang Won-young","Rei","Leeseo","An Yu-jin","LIZ","Ga-uel"],"imageSize":224}
+{
+  "tfjsVersion": "1.3.1",
+  "tmVersion": "2.4.5",
+  "packageVersion": "0.8.4-alpha2",
+  "packageName": "@teachablemachine/image",
+  "timeStamp": "2022-12-20T08:42:40.503Z",
+  "userMetadata": {},
+  "modelName": "tm-my-image-model",
+  "labels": ["원영", "레이", "이서", "유진", "리즈", "가을"],
+  "imageSize": 224
+}
