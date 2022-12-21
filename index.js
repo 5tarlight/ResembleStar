@@ -84,12 +84,14 @@ const start = async () => {
       start();
     }
     webcam.update();
-    await predict();
+
     window.requestAnimationFrame(loop);
   };
   document.getElementById("webcam-container").appendChild(webcam.canvas);
 
   window.requestAnimationFrame(loop);
+  predict();
+  setInterval(() => predict(), 500);
 };
 
 startBtn = document.querySelector("button#start");
