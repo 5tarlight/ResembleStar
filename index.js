@@ -8,8 +8,11 @@ let flipper;
 let ls;
 let loading;
 let stat;
+let memberImg;
+let targetImg;
 let running = false;
 let flip = true;
+let loopId = 1;
 
 const rankings = (array) => {
   return array
@@ -30,6 +33,9 @@ const stop = () => {
   cam.innerHTML = "";
   labels.style.visibility = "hidden";
   loading.style.display = "none";
+  memberImg.style.display = "block";
+  targetImg.style.display = "none";
+  clearInterval(loopId);
 };
 
 const start = async () => {
@@ -39,6 +45,7 @@ const start = async () => {
   startBtn.addEventListener("click", stop);
   fieldSet.disabled = true;
   flipper.disabled = false;
+  memberImg.style.display = "none";
 
   const group =
     document.querySelector('input[type="radio"]:checked').value + "/";
@@ -49,10 +56,11 @@ const start = async () => {
   model = await tmImage.load(modelURL, metadataURL);
   maxPredictions = model.getTotalClasses();
 
-  webcam = new tmImage.Webcam(550, 550, flip);
+  webcam = new tmImage.Webcam(450, 450, flip);
   await webcam?.setup();
   await webcam?.play();
   loading.style.display = "none";
+  targetImg.style.display = "block";
   labels.style.visibility = "visible";
   console.log("visible");
 
@@ -75,6 +83,13 @@ const start = async () => {
     ls[2].innerText = `${prediction[ranks.indexOf(3)].className}: ${Math.floor(
       probs[ranks.indexOf(3)] * 100
     )}%`;
+
+    targetImg.src =
+      URL +
+      document.querySelector('input[type="radio"]:checked').value +
+      "/" +
+      prediction[ranks.indexOf(1)].className +
+      ".jpg";
   };
 
   const loop = async () => {
@@ -91,7 +106,7 @@ const start = async () => {
 
   window.requestAnimationFrame(loop);
   predict();
-  setInterval(() => predict(), 500);
+  loopId = setInterval(() => predict(), 500);
 };
 
 startBtn = document.querySelector("button#start");
@@ -106,6 +121,8 @@ ls = [
 ];
 loading = document.querySelector("#loading");
 stat = document.querySelector("#status");
+memberImg = document.querySelector("#members");
+targetImg = document.querySelector(".target-image");
 
 startBtn.addEventListener("click", start);
 labels.style.visibility = "hidden";
@@ -121,3 +138,9 @@ fetch(URL)
     stat.classList.add("error");
     stat.innerText = "서버에 연결하지 못했습니다.\n" + e;
   });
+
+fieldSet.onchange = (e) => {
+  const group =
+    document.querySelector('input[type="radio"]:checked').value + "/";
+  memberImg.src = URL + group + "img.jpg";
+};

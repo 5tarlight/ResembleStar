@@ -4,10 +4,19 @@
   box-sizing: border-box;
 }
 
+body {
+  background: linear-gradient(135deg, #eceddc 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, #eceddc 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, #eceddc 25%, transparent 25%),
+    linear-gradient(45deg, #eceddc 25%, transparent 25%);
+  background-size: 100px 100px;
+  background-color: #feccd5;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: sans-serif;
 }
 
 .inner {
@@ -21,6 +30,7 @@ h1 {
   font-weight: bolder;
   text-align: center;
   margin-top: 1rem;
+  color: rgb(0, 0, 0);
 }
 
 h2 {
@@ -43,6 +53,12 @@ fieldset > legend {
 .menu {
   width: 20%;
   overflow: auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.26);
+  box-shadow: 2px 2px 15px 5px rgba(0, 0, 0, 0.26);
+  height: 700px;
+  background-color: white;
 }
 
 .main {
@@ -109,4 +125,58 @@ footer {
 
 .error {
   color: red;
+}
+
+.top {
+  padding: 5px;
+  display: flex;
+  background-color: #5d5d5d;
+}
+
+.red {
+  background-color: rgb(255, 126, 90);
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.yellow {
+  background-color: rgb(255, 180, 40);
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.green {
+  background-color: rgb(33, 215, 33);
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+.menu-content {
+  padding: 10px;
+}
+
+img {
+  width: 100%;
+}
+
+.cam {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cam > div {
+  width: 450px;
+  height: 550px;
+  overflow-y: hidden;
+}
+
+#webcam-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

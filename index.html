@@ -21,69 +21,78 @@
 
       <div class="inner">
         <div class="menu">
-          <h2>설정</h2>
-
-          <fieldset>
-            <legend>연예인 데이터셋</legend>
-
-            <div>
-              <input
-                type="radio"
-                id="dewey"
-                name="drone"
-                value="seventeen"
-                checked
-              />
-              <label for="seventeen">세븐틴</label>
-            </div>
-
-            <div>
-              <input type="radio" id="louie" name="drone" value="bts" />
-              <label for="bts">방탄소년단</label>
-            </div>
-
-            <!-- <div>
-              <input type="radio" id="louie" name="drone" value="boyz" />
-              <label for="boyz">The Boyz</label>
-            </div> -->
-
-            <div>
-              <input type="radio" id="huey" name="drone" value="aespa" />
-              <label for="aespa">Aespa</label>
-            </div>
-            <div>
-              <input type="radio" id="louie" name="drone" value="gidle" />
-              <label for="gidle">(여자)아이들</label>
-            </div>
-
-            <div>
-              <input type="radio" id="louie" name="drone" value="ive" />
-              <label for="ive">IVE</label>
-            </div>
-
-            <div>
-              <input type="radio" id="louie" name="drone" value="newjeans" />
-              <label for="newjeans">NewJeans</label>
-            </div>
-          </fieldset>
-
-          <div>
-            <input type="checkbox" id="flip" name="flip" checked />
-            <label for="flip">좌우반전 (실행 시 활성화)</label>
+          <div class="top">
+            <div class="red"></div>
+            <div class="yellow"></div>
+            <div class="green"></div>
           </div>
+          <div class="menu-content">
+            <h2>설정</h2>
 
-          <button id="start" class="start">시작</button>
-          <div id="status"></div>
-          <footer>
-            실제 사진을 바탕으로 유사도를 측정합니다.<br />자세, 옷 등에 영향을
-            받을 수 있습니다.<br />웹캠 사용을 허용하지 않은 경우
-            새로고침(F5)으로 초기화해 주세요. <br /><br />Dev by 김규산, NGD by
-            조신권
-          </footer>
+            <fieldset>
+              <legend>연예인 데이터셋</legend>
+
+              <div>
+                <input
+                  type="radio"
+                  id="dewey"
+                  name="drone"
+                  value="seventeen"
+                  checked
+                />
+                <label for="seventeen">세븐틴</label>
+              </div>
+
+              <div>
+                <input type="radio" id="louie" name="drone" value="bts" />
+                <label for="bts">방탄소년단</label>
+              </div>
+
+              <div>
+                <input type="radio" id="huey" name="drone" value="aespa" />
+                <label for="aespa">Aespa</label>
+              </div>
+              <div>
+                <input type="radio" id="louie" name="drone" value="gidle" />
+                <label for="gidle">(여자)아이들</label>
+              </div>
+
+              <div>
+                <input type="radio" id="louie" name="drone" value="ive" />
+                <label for="ive">IVE</label>
+              </div>
+
+              <div>
+                <input type="radio" id="louie" name="drone" value="newjeans" />
+                <label for="newjeans">NewJeans</label>
+              </div>
+            </fieldset>
+
+            <div>
+              <input type="checkbox" id="flip" name="flip" checked />
+              <label for="flip">좌우반전 (실행 시 활성화)</label>
+            </div>
+
+            <button id="start" class="start">시작</button>
+            <div id="status"></div>
+            <footer>
+              실제 사진을 바탕으로 유사도를 측정합니다.<br />자세, 옷 등에
+              영향을 받을 수 있습니다.<br />웹캠 사용을 허용하지 않은 경우
+              새로고침(F5)으로 초기화해 주세요. <br /><br />Dev by 김규산, NGD
+              by 조신권
+            </footer>
+          </div>
         </div>
         <div class="main">
-          <div id="loading">학습하는 중...<br />웹캠 사용을 허용해주세요.</div>
-          <div id="webcam-container"></div>
+          <div id="loading">학습하는 중...<br />웹캠 사용을 허용해 주세요.</div>
+          <img id="members" src="http://localhost:9000/seventeen/img.jpg" />
+
+          <div class="cam">
+            <div>
+              <img class="target-image" />
+            </div>
+            <div id="webcam-container"></div>
+          </div>
           <div id="label-container">
             <div id="l1" class="max"></div>
             <div id="l2"></div>

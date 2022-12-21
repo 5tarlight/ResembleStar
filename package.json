@@ -4,8 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/text-to-speech": "^4.1.0",
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "talkify-tts": "^3.9.3"
   },
   "scripts": {
     "run": "node server.js"
