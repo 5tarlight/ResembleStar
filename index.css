@@ -1,16 +1,14 @@
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  background: linear-gradient(135deg, #eceddc 25%, transparent 25%) -50px 0,
-    linear-gradient(225deg, #eceddc 25%, transparent 25%) -50px 0,
-    linear-gradient(315deg, #eceddc 25%, transparent 25%),
-    linear-gradient(45deg, #eceddc 25%, transparent 25%);
-  background-size: 100px 100px;
-  background-color: #feccd5;
 }
 
 .container {
@@ -30,7 +28,8 @@ h1 {
   font-weight: bolder;
   text-align: center;
   margin-top: 1rem;
-  color: rgb(0, 0, 0);
+  color: #202121;
+  font-family: 'yg-jalnan';
 }
 
 h2 {
@@ -41,13 +40,22 @@ h2 {
   font-weight: bold;
 }
 
+body {
+  background: rgb(181,216,255);
+  background: linear-gradient(0deg, rgba(181,216,255,1) 0%, rgba(235,244,255,1) 50%, rgba(230,242,255,1) 100%);
+}
+
+
 fieldset {
   padding: 5px;
   border: none;
+  margin-top: 2rem;
 }
 
 fieldset > legend {
   font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .menu {
@@ -167,6 +175,7 @@ img {
 .cam {
   display: flex;
   justify-content: space-between;
+  z-index: 101;
 }
 
 .cam > div {
@@ -179,4 +188,21 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.snow {
+  position: absolute;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.menu, .main {
+  z-index: 101;
+}
+
+body {
+  overflow: hidden;
 }
